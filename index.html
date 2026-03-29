@@ -38,18 +38,17 @@
         }
 
         .bio-text h2 { margin: 0 0 10px; font-size: 1.5rem; color: #111; }
-        .bio-text p { color: #666; line-height: 1.6; margin: 0; font-size: 0.95rem; }
+        .bio-text p { color: #666; line-height: 1.6; margin: 0; font-size: 0.95rem; white-space: pre-line; }
 
         /* --- THE GRID SYSTEM --- */
         .gallery-container {
             max-width: 1200px; margin: 40px auto; padding: 0 20px;
             display: grid;
-            /* DEFAULT: 3 Columns para sa PC/Laptop */
             grid-template-columns: repeat(3, 1fr); 
             gap: 25px;
         }
 
-        /* RESPONSIVE: Sa Cellphone (max-width 768px), magiging 1 COLUMN lang */
+        /* RESPONSIVE: Sa Cellphone, magiging 1 COLUMN lang */
         @media (max-width: 768px) {
             .gallery-container { 
                 grid-template-columns: 1fr; 
@@ -110,7 +109,7 @@
             <div class="modal-right">
                 <div id="modal-status" class="status-badge"></div>
                 <h2 id="modal-title" style="margin:0; font-family: 'Playfair Display', serif; font-size: 2rem;"></h2>
-                <p id="modal-desc" style="color: #666; line-height: 1.6; margin: 20px 0;"></p>
+                <p id="modal-desc" style="color: #666; line-height: 1.6; margin: 20px 0; white-space: pre-line;"></p>
                 <h3 id="modal-price" style="font-size: 1.4rem; color: #111;"></h3>
             </div>
         </div>
@@ -119,11 +118,14 @@
     <script>
         // --- 1. PROFILE SETTINGS ---
         const artistProfile = {
-            profilePic: "profile.jpg", // <--- Pangalan ng file mo dapat ay 'profile.jpg'
+            profilePic: "profile.jpg",
             title: "About Nouvel Kirby",
-            bio: "He is a student at Lyceum of Subic Bay, Inc. whose love for art began in junior high through the Special Program in the Arts at Subic National High School. He works mainly with graphite, charcoal, and acrylics.
-Over the years, he has accepted art commissions to buy his own materials, allowing him to keep practicing, improving, and challenging himself.
-For Nouvel, art is more than just creating something nice to look at — it's about showing emotions and telling stories in every piece. He is dedicated to growing as an artist and making works that connect with people."
+            // Ginamitan ko ng Backticks (`) para pwede ang multiple lines
+            bio: `He is a student at Lyceum of Subic Bay, Inc. whose love for art began in junior high through the Special Program in the Arts at Subic National High School. He works mainly with graphite, charcoal, and acrylics.
+
+            Over the years, he has accepted art commissions to buy his own materials, allowing him to keep practicing, improving, and challenging himself.
+
+            For Nouvel, art is more than just creating something nice to look at — it's about showing emotions and telling stories in every piece. He is dedicated to growing as an artist and making works that connect with people.`
         };
 
         // --- 2. ARTWORKS LIST ---
@@ -131,28 +133,27 @@ For Nouvel, art is more than just creating something nice to look at — it's ab
             {
                 title: "A Sovereign Lady",
                 price: "P10,000",
-                description: "Description ng una mong art.",
+                description: "A detailed portrait focusing on the grace and strength of the subject.",
                 status: "Available",
                 image: "art1.jpg"
             },
             {
-                title: "Second Artwork",
+                title: "Charcoal Study",
                 price: "Sold",
-                description: "Description ng pangalawa mong art.",
+                description: "Exploring shadows and highlights using traditional charcoal.",
                 status: "Sold",
                 image: "art2.jpg"
             },
             {
-                title: "Second Artwork",
+                title: "Emotional Reflection",
                 price: "Sold",
-                description: "Description ng pangalawa mong art.",
+                description: "A piece that represents personal growth through art.",
                 status: "Sold",
                 image: "art3.jpg"
             }
-            // Dagdag ka lang dito...
         ];
 
-        // --- 3. AUTO-LOADER (Wag galawin) ---
+        // --- 3. AUTO-LOADER ---
         const bioContainer = document.getElementById('bio-container');
         bioContainer.innerHTML = `
             <img src="${artistProfile.profilePic}" class="bio-pic">
